@@ -155,7 +155,13 @@ $color-boton: #ff6600;
 }
 
 .background {
-    background-image: url('');
+    background: url("https://arturoocampo93.github.io/FedEx2020/images/Master.jpg");
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+    /* Resize the background image to cover the entire container */
 }
 
 @media only screen and (max-width: 769px) {
