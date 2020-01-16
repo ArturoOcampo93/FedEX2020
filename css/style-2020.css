@@ -1,0 +1,200 @@
+#formregistro {
+  width: 70%;
+  margin-top: 6%; }
+
+.center-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+.menu-form {
+  width: 100%;
+  color: white;
+  border-bottom: 1px solid white;
+  border-left: 1px solid white; }
+  .menu-form .row {
+    display: flex;
+    flex-wrap: nowrap; }
+  .menu-form h4 {
+    color: white !important;
+    margin: 0%;
+    margin-left: 20%;
+    font-size: 2.3vw; }
+  .menu-form p {
+    font-size: 1vw;
+    margin: 0%;
+    margin-left: 6%;
+    line-height: 1.3; }
+  .menu-form .cont-triangulo {
+    height: auto;
+    justify-content: center;
+    align-self: flex-start; }
+  .menu-form .triangulo-equilatero-bottom {
+    width: 0;
+    height: 0;
+    border-right: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid white; }
+
+.menu-form:first-child {
+  border-left: none; }
+
+.width-100 {
+  width: 100%; }
+
+#step-menu-1 {
+  border-bottom: 20px solid;
+  color: white; }
+
+#step-menu-2 {
+  border-bottom: 20px solid;
+  color: #4c148c; }
+
+#step-menu-3 {
+  border-bottom: 20px solid;
+  color: #4c148c; }
+
+.steps {
+  margin-top: 3%; }
+
+.checkboxesSection {
+  width: 100%; }
+
+.step-button {
+  width: 100%;
+  background: #ff6600;
+  margin: 3% 2% 0% 2%;
+  padding: 2% 0% 2% 0%;
+  color: white; }
+
+.cont-btn-steps {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 3% 0% 0% 0%;
+  padding: 0%; }
+  .cont-btn-steps .btn-step-back {
+    width: 22%;
+    background: #ff6600;
+    margin: 0%;
+    margin-right: 1.2%; }
+  .cont-btn-steps .btn-step-back:hover {
+    background: #ff6600;
+    border: none; }
+  .cont-btn-steps .btn-step-next:hover {
+    background: #ff6600;
+    border: none; }
+  .cont-btn-steps .btn-step-next {
+    width: 71%;
+    background: #ff6600;
+    margin: 0%;
+    margin-left: 1.2%; }
+
+#step-1 {
+  display: block; }
+
+#step-2 {
+  display: none; }
+
+#step-3 {
+  display: none; }
+
+#alerta-step-1 {
+  display: block; }
+
+#alerta-step-2 {
+  display: block; }
+
+#alerta-step-3 {
+  display: block; }
+
+.mb-3 {
+  margin-bottom: 1% !important; }
+
+.textWhite {
+  width: 100%;
+  margin-top: 5%;
+  font-size: 10pt !important;
+  text-align: center !important; }
+
+#empresa,
+#socio {
+  display: none; }
+
+.background {
+  background-image: url(""); }
+
+@media only screen and (max-width: 769px) {
+  #formregistro {
+    width: 100%;
+    margin-top: 6%; }
+
+  .menu-form {
+    width: 100%;
+    color: white;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white; }
+    .menu-form .row {
+      display: flex;
+      flex-wrap: wrap; }
+    .menu-form h4 {
+      color: white !important;
+      margin: 0%;
+      margin-left: 6%;
+      font-size: 4vw; }
+    .menu-form p {
+      font-size: 2.5vw;
+      margin: 0%;
+      margin-left: 6%;
+      line-height: 1.3; }
+    .menu-form .cont-triangulo {
+      height: auto;
+      justify-content: center;
+      align-self: flex-start; }
+    .menu-form .triangulo-equilatero-bottom {
+      width: 0;
+      height: 0;
+      border-right: 10px solid transparent;
+      border-top: 10px solid transparent;
+      border-left: 10px solid transparent;
+      border-bottom: 10px solid white; } }
+@media only screen and (max-width: 426px) {
+  .ValidationLogIn {
+    width: 100%; }
+
+  #formregistro {
+    width: 100%;
+    margin-top: 6%; }
+
+  .menu-form {
+    width: 100%;
+    color: white;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white; }
+    .menu-form .row {
+      display: flex;
+      flex-wrap: wrap; }
+    .menu-form h4 {
+      color: white !important;
+      margin: 0%;
+      margin-left: 6%;
+      font-size: 5vw; }
+    .menu-form p {
+      font-size: 4vw;
+      margin: 0%;
+      margin-left: 6%;
+      line-height: 1.3; }
+    .menu-form .cont-triangulo {
+      height: auto;
+      justify-content: center;
+      align-self: flex-start; }
+    .menu-form .triangulo-equilatero-bottom {
+      width: 0;
+      height: 0;
+      border-right: 10px solid transparent;
+      border-top: 10px solid transparent;
+      border-left: 10px solid transparent;
+      border-bottom: 10px solid white; } }
+
+/*# sourceMappingURL=style-2020.css.map */

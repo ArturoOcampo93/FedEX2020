@@ -1,0 +1,102 @@
+<!--Formulario solo de nuevos registros-->
+<form action="index.html" name="formregistro" id="formregistro">
+
+    <div class="row">
+        <div class="col-12 center">
+            <!-- Alerta Nombre -->
+            <p id="alertaNombre" class="ValidationRegistro naranja">Recuerda que el nombre de la persona registrada debe de ser la misma en el remitente de la guía participante.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 ">
+            <input id="Nombre" type="text" name="Nombre" onclick="Disclaimer()" placeholder="Nombre*" onkeypress="return permite(event, 'car')" maxlength="50">
+        </div>
+        <div class="col-12 col-md-6 ">
+            <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos*" onkeypress="return permite(event, 'car')" maxlength="50">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <input type="text" name="telefono" id="telefono" placeholder="Teléfono de contacto*" onkeypress="return permite(event, 'num')" maxlength="10">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <input type="text" name="email" id="email" placeholder="Correo electrónico*" maxlength="50">
+        </div>
+        <div class="col-12 col-md-6">
+            <input type="text" name="email2" id="email2" placeholder="Confirmar correo electrónico*" maxlength="50">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <input type="password" name="password" id="password" placeholder="Password*">
+        </div>
+        <div class="col-12 col-md-6">
+            <input type="password" name="password2" id="password2" placeholder="Confirmar password*">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 md-12">
+            <input type="text" name="empresa" id="empresa" placeholder="Nombre de la empresa (Opcional)" onkeypress="return permite(event, 'num_car')" maxlength="100">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 md-12">
+            <select class="custom-select custom-select-lg mb-3" name="enteraste" id="enteraste">
+    <option value="0" selected="">¿Cómo te enteraste de la promoción?*</option>
+    <option value="FedEx.com">FedEx.com</option>
+    <option value="Radio">Radio</option>
+    <option value="Email">Email</option>
+    <option value="Facebook">Facebook</option>
+    <option value="LinkedIn">LinkedIn</option>
+    <option value="Por referencia de amigo/conocido">Por referencia de amigo/conocido</option>
+    <option value="Publicidad en internet">Publicidad en internet</option>
+    <option value="Centros de Envío FedEx">Centros de Envío FedEx®</option>
+    <option value="Ejecutivo de Cuenta FedEx">Ejecutivo de Cuenta FedEx®</option>
+  </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p class="textWhite">*Campos obligatorios</p>
+        </div>
+    </div>
+    <div class="row check checkboxesSection">
+        <div class="col-2">
+            <input class="check" type="checkbox" id="mayor" name="mayor" value="OK">
+        </div>
+        <div class="col-10 align">
+            <label>Certifico que soy mayor de 18 años</label>
+        </div>
+    </div>
+    <div class="row check">
+        <div class="col-2">
+            <input class="check" type="checkbox" id="terminos" name="terminos" value="OK">
+        </div>
+        <div class="col-10 align">
+            <label>Acepto<a class="underline" href="PDF/TC-FedEx.pdf" target="_blank"> Términos y Condiciones </a>de la promoción</label>
+        </div>
+    </div>
+    <div class="row check">
+        <div class="col-2">
+            <input class="check" type="checkbox" id="aviso" name="aviso" value="OK">
+        </div>
+        <div class="col-10 align">
+            <label>He leído y estoy de acuerdo con el<a class="underline" href="PDF/AvisoPrivacidad.pdf" target="_blank"> Aviso de Privacidad.</a></label>
+        </div>
+    </div>
+</form>
+<div class="row">
+    <div class="col-12 center">
+        <!-- Alerta de validación de campos | el ID esta oculto | Agregar validación -->
+        <p id="alertaRegistro" class="ValidationRegistro"></p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 center marginTop marginBottom">
+        <!--<button type="button" class="btn btn-primary btn-lg" onclick="location.href='ThankYouPage.html';">Regístrate y participa</button>-->
+        <button type="button" class="btn btn-primary btn-lg" id="bt_registro">Regístrate y participa</button>
+    </div>
+</div>
+</div>
