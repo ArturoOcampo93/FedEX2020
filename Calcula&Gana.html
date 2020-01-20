@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/fireworks.css">
+    <!--CSS 2020-->
+    <link rel="stylesheet" href="css/style-2020.css">
 
     <!-- favion  -->
     <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-touch-icon.png">
@@ -54,84 +56,83 @@
         </nav>
     </header>
     <main>
-        <div class="container-fluid CalculaPage">
-            <div class="container">
+        <div class="container-fluid gamepage">
+            <div class="game">
+                Ventana del juego<br>-<br><a class="btn btn-primary" data-toggle="modal" data-target="#Gracias-Participar">Modal de fin del juego</a>
+            </div>
+        </div>
 
-                <div class="row background">
-
-                </div>
-
-                <!--Modal | Numero de Guia | Se carga automaticamente al inicar la pagina y pide al usuario el no. de guía-->
-                <div class="modal" id="LoadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header modal-backdrop">
+        <!--Modal | Numero de Guia | Se carga automaticamente al inicar la pagina y pide al usuario el no. de guía-->
+        <div class="modal" id="LoadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header modal-backdrop">
+                    </div>
+                    <div class="modal-body" id="Modal">
+                        <div class="row center">
+                            <img class="img-fluid ImgModal" src="images/ModalJuego.png" alt="Modal Image">
+                        </div>
+                        <div class="row">
+                            <div class="col-12 textcenter">
+                                <h2 class="TitulosModal">¡El mejor goleador!</h2>
+                                <p class="ModalText">Registra tu No. de Guía y comienza el juego. Acumula puntos por cada guía registrada.</p>
                             </div>
-                            <div class="modal-body" id="Modal">
-                                <div class="row center">
-                                    <img class="img-fluid ImgModal" src="images/ModalJuego.png" alt="Modal Image">
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 textcenter">
-                                        <h2 class="TitulosModal">¡El mejor goleador!</h2>
-                                        <p class="ModalText">Registra tu No. de Guía y comienza el juego. Acumula puntos por cada guía registrada.</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <form class="" action="" method="post" onsubmit="validador()">
-                                            <input class="textcenter" id="NoGuia" type="text" name="" value="" size="12" maxlength="12" placeholder="Escriba su No. de guía FedEx">
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="row" id="error">
-                                    <div class="col-12 textcenter">
-                                        <p>Número de guía incorrecto o registrado anteriormente</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <button type="button" class="btn btn-primary btn-lg maxwidth EndPage" onclick="validador()">Participar</button>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <form class="" action="" method="post" onsubmit="validador()">
+                                    <input class="textcenter" id="NoGuia" type="text" name="" value="" size="12" maxlength="12" placeholder="Escriba su No. de guía FedEx">
+                                </form>
                             </div>
-                            <div class="container-fluid center align" id="CountDown">
-                                <div class="row">
-                                    <div class="col-12 align">
-                                        <p id="countdown"></p>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="row" id="error">
+                            <div class="col-12 textcenter">
+                                <p>Número de guía incorrecto o registrado anteriormente</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-primary btn-lg maxwidth EndPage" onclick="validador()">Participar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid center align" id="CountDown">
+                        <div class="row">
+                            <div class="col-12 align">
+                                <p id="countdown"></p>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
 
-                <!--Modal | Gracias por Participar-->
-                <div class="modal fade" id="Gracias-Participar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content modal-game">
-                            <div class="modal-header">
-                                <button type="button" class="close" onclick="location.href='MiCuenta.html';">
+        <!--Modal | Gracias por Participar-->
+        <div class="modal fade" id="Gracias-Participar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content modal-game">
+                    <div class="modal-header">
+                        <button type="button" class="close" onclick="location.href='MiCuenta.html';">
                 <span aria-hidden="true">&times;</span>
               </button>
-                            </div>
-                            <div class="modal-body centerWrap">
-                                <div class="row center">
-                                    <img class="img-fluid iconothanks fadeInUp animated" src="images/thanks.png" alt="Thanks">
-                                </div>
-                                <div class="row center marginTop">
-                                    <h6>Gracias por participar</h6>
-                                </div>
-                            </div>
-                            <div class="modal-footer center">
-                                <button type="button" class="btn btn-primary btn-lg" onclick="location.href='MiCuenta.html';">Ir a Mi Cuenta</button>
-                            </div>
+                    </div>
+                    <div class="modal-body centerWrap">
+                        <div class="row center">
+                            <img class="img-fluid iconothanks fadeInUp animated" src="images/thanks.png" alt="Thanks">
+                        </div>
+                        <div class="row center marginTop">
+                            <h6>Gracias por participar</h6>
                         </div>
                     </div>
+                    <div class="modal-footer center">
+                        <button type="button" class="btn btn-primary btn-lg" onclick="location.href='MiCuenta.html';">Ir a Mi Cuenta</button>
+                    </div>
                 </div>
+            </div>
+        </div>
     </main>
-    <footer>
+    <footer class="bottom">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-3 center linea">
@@ -163,7 +164,6 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script src="js/aos.js"></script>
     <script type="text/javascript" src="js/validacion.js"></script>
-    <script src="js/countdown.js"></script>
     <script>
         AOS.init({
             easing: 'ease-in-out-sine'

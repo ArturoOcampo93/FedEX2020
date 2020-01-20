@@ -154,14 +154,42 @@ $color-boton: #ff6600;
     display: none;
 }
 
-.background {
-    background: url("https://arturoocampo93.github.io/FedEx2020/images/Master.jpg");
-    background-position: center;
-    /* Center the image */
-    background-repeat: no-repeat;
-    /* Do not repeat the image */
-    background-size: cover;
-    /* Resize the background image to cover the entire container */
+.gamepage {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    .game {
+        width: 800px;
+        height: 600px;
+        border: 1px solid black;
+        margin-top: 2%;
+        margin-bottom: 5%;
+        text-align: center;
+    }
+}
+
+.bottom {
+    clear: both;
+    bottom: 0;
+    align-self: flex-end;
+}
+
+thead {
+    text-align: center;
+}
+
+tfoot {
+    text-align: center;
+    font-weight: bold;
+    .text-right {
+        text-align: right;
+    }
+}
+
+.margin-Bottom {
+    margin-bottom: 5%;
 }
 
 @media only screen and (max-width: 769px) {
@@ -248,5 +276,8 @@ $color-boton: #ff6600;
             border-left: 10px solid transparent;
             border-bottom: 10px solid white;
         }
+    }
+    .linea {
+        border: none;
     }
 }
