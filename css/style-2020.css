@@ -129,11 +129,13 @@
   justify-content: center;
   align-items: center;
   background-image: url("https://arturoocampo93.github.io/FedEx2020/images/Master.png");
-  background-repeat: no-repeat, repeat; }
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+  background-position: top; }
   .gamepage .game {
     width: 800px;
+    background: white;
     height: 600px;
-    border: 1px solid black;
     margin-top: 2%;
     margin-bottom: 5%;
     text-align: center; }
