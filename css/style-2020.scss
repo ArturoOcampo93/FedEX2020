@@ -160,7 +160,8 @@ $color-boton: #ff6600;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-image: url('https://arturoocampo93.github.io/FedEx2020/images/Master.jpg');
+    background-image: url('https://arturoocampo93.github.io/FedEx2020/images/Master.png');
+    background-repeat: no-repeat, repeat;
     .game {
         width: 800px;
         height: 600px;
