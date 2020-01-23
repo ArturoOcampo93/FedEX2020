@@ -144,7 +144,7 @@ $color-boton: #ff6600;
 
 .textWhite {
     width: 100%;
-    margin-top: 5%;
+    margin-top: 0%;
     font-size: 10pt !important;
     text-align: center !important;
 }
@@ -160,6 +160,7 @@ $color-boton: #ff6600;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    background-image: url('https://arturoocampo93.github.io/FedEx2020/images/Master.jpg');
     .game {
         width: 800px;
         height: 600px;
@@ -190,6 +191,14 @@ tfoot {
 
 .margin-Bottom {
     margin-bottom: 5%;
+}
+
+#Registrate {
+    width: 100%;
+}
+
+#formregistro {
+    width: 100%;
 }
 
 @media only screen and (max-width: 769px) {
