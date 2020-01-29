@@ -151,6 +151,10 @@ h3 {
     font-family: "Univers-bold", sans-serif;
 }
 
+.size-premios {
+    font-size: 30pt !important;
+}
+
 .fontFedex {
     font-family: "univers-condensed-bold-otf", "univers-condensed-bold-woff", sans-serif;
 }
@@ -1030,6 +1034,14 @@ footer h4 {
     .bigtext {
         font-size: 12pt;
     }
+    .size-premios {
+        font-size: 18pt !important;
+    }
+    .cont-boton {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 }
 
 @media only screen and (max-width: 576px) {
@@ -1051,6 +1063,11 @@ footer h4 {
         width: 100%;
         /*position: absolute;*/
         bottom: 0;
+    }
+    .cont-boton {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 }
 
@@ -1198,6 +1215,11 @@ footer h4 {
         font-size: 4vw;
         margin-bottom: 5%;
         text-shadow: 2px 0px 3px rgba(0, 0, 0, 0.46);
+    }
+    .cont-boton {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 }
 
