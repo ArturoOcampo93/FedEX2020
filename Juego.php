@@ -1,9 +1,50 @@
+<?php
+session_start();
+require_once("js/clases.php");
+if (isset($_SESSION['fedex19']) ) {  //existe la session
+	//echo "valida usuario";
+	$recievedJwt=$_SESSION['fedex19'];
+	//token valido
+	$tokenValid = Tocken::validaToken($recievedJwt);
+
+	if($tokenValid){  //el token es valido
+		//datos de token
+		$usuarioC = Tocken::datosToken($recievedJwt);
+		$usuarioC = json_decode($usuarioC, true);
+		//print_r($usuarioC);
+		$existe=Usuarios::buscaUsuario($usuarioC['usuario']);
+
+		if($existe['encontrado'] == "si"){ //el usuario es valido
+		}else{
+			session_destroy();
+			header("Location: index.html");
+			exit(0);
+		}  //termina usuario
+
+	}else{
+		session_destroy();
+		header("Location: index.thml");
+		exit(0);
+	}// termina token
+
+}else{
+	session_destroy();
+	header("Location: index.html");
+	exit(0);
+}  //termina session
+
+?>
 <!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name ="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <!--CSS Bootrstrap 4.3 & Arturo-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -22,6 +63,60 @@
     <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#00a300">
     <meta name="theme-color" content="#ffffff">
+
+    <style>
+
+        canvas {
+                  image-rendering: optimizeSpeed;
+                  -webkit-interpolation-mode: nearest-neighbor;
+                  -ms-touch-action: none;
+                  margin: 0px;
+                  padding: 0px;
+                  border: 0px;
+        }
+        :-webkit-full-screen #canvas {
+             width: 100%;
+             height: 100%;
+        }
+        div.gm4html5_div_class
+        {
+          margin: 0px;
+          padding: 0px;
+          border: 0px;
+        }
+        /* START - Login Dialog Box */
+        div.gm4html5_login
+        {
+             padding: 20px;
+             position: absolute;
+             border: solid 2px #000000;
+             background-color: #404040;
+             color:#00ff00;
+             border-radius: 15px;
+             box-shadow: #101010 20px 20px 40px;
+        }
+        div.gm4html5_cancel_button
+        {
+             float: right;
+        }
+        div.gm4html5_login_button
+        {
+             float: left;
+        }
+        div.gm4html5_login_header
+        {
+             text-align: center;
+        }
+        /* END - Login Dialog Box */
+        :-webkit-full-screen {
+           width: 100%;
+           height: 100%;
+        }
+
+        .game {
+          background-color: transparent!important;
+        }
+    </style>
 
     <title>Fedex</title>
 </head>
@@ -50,7 +145,7 @@
                         <a class="nav-link text-white" href="index.html#ganadores">Ganadores</a>
                     </li>
                 </ul>
-                <span class="navbar-text"><a href="#" class="text-white" onclick="location.href='MiCuenta.html';">Mi Cuenta</a></span>
+                <span class="navbar-text"><a href="#" class="text-white" onclick="location.href='MiCuenta.php';">Mi Cuenta</a></span>
                 <img src="images/Icon-cuenta.png" class="img-fluid" id="icon-cuenta" alt="Cuenta">
             </div>
         </nav>
@@ -58,7 +153,10 @@
     <main>
         <div class="container-fluid gamepage">
             <div class="game">
-                Ventana del juego<br>-<br><a class="btn btn-primary" data-toggle="modal" data-target="#Gracias-Participar">Modal de fin del juego</a>
+                <!--Ventana del juego<br>-<br><a class="btn btn-primary" data-toggle="modal" data-target="#Gracias-Participar">Modal de fin del juego</a>-->
+
+
+
             </div>
         </div>
 
@@ -81,7 +179,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <form class="" action="" method="post" onsubmit="validador()">
-                                    <input class="textcenter" id="NoGuia" type="text" name="" value="" size="12" maxlength="12" placeholder="Escriba su No. de guía FedEx">
+                                    <input class="textcenter" id="NoGuia" type="text" name="NoGuia" value="" size="12" maxlength="12" placeholder="Escriba su No. de guía FedEx">
                                 </form>
                             </div>
                         </div>
@@ -92,9 +190,13 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
+                              <div id="alertaRegistro" class="textcenter error">
+                                asdas
+                              </div>
                                 <button type="button" class="btn btn-primary btn-lg maxwidth EndPage" onclick="validador()">Participar</button>
                             </div>
                         </div>
+
                     </div>
                     <div class="container-fluid center align" id="CountDown">
                         <div class="row">
@@ -169,6 +271,9 @@
             easing: 'ease-in-out-sine'
         });
     </script>
+
+
+
 </body>
 
 </html>

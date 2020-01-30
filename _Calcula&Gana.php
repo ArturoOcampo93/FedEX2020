@@ -1,3 +1,42 @@
+<?php
+session_start();
+require_once("js/clases.php");
+if (isset($_SESSION['fedex19']) ) {  //existe la session
+	//echo "valida usuario";
+	$recievedJwt=$_SESSION['fedex19'];
+	//token valido
+	$tokenValid = Tocken::validaToken($recievedJwt);
+
+	if($tokenValid){  //el token es valido
+		//datos de token
+		$usuarioC = Tocken::datosToken($recievedJwt);
+		$usuarioC = json_decode($usuarioC, true);
+		//print_r($usuarioC);
+		$existe=Usuarios::buscaUsuario($usuarioC['usuario']);
+
+		if($existe['encontrado'] == "si"){ //el usuario es valido
+		}else{
+			session_destroy();
+			header("Location: index.html");
+			exit(0);
+		}  //termina usuario
+
+	}else{
+		session_destroy();
+		header("Location: index.thml");
+		exit(0);
+	}// termina token
+
+}else{
+	session_destroy();
+	header("Location: index.html");
+	exit(0);
+}  //termina session
+
+//historial de guias
+$guias = Guias::todasGuias($usuarioC['usuario']);
+
+?>
 <!doctype html>
 <html lang="en">
   <head>

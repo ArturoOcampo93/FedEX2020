@@ -11,12 +11,12 @@ $(document).ready(function() {
 
     $('#LoadModal').on('hidden.bs.modal', function() {
         //cuando cerramos el modal
-        start();
-        validaFecha();
+
+        validaGuia();
     });
 
     //registra calculo
-    $("#bt_ticket").click(function(event) {
+    /*$("#bt_ticket").click(function(event) {
         var cajas = $.trim($("#cajas").val());
         if (cajas.length == 0) {
             $("#alertaRegistro").html("Debe proporcionar en numero de cajas");
@@ -54,25 +54,20 @@ $(document).ready(function() {
 
         return false;
 
-    });
+    });*/
 }); //termina ready
 
 //fecha actual
-function validaFecha() {
+var guiaCorrecta = false;
+function validaGuia() {
 
-    var data = { user: "user" };
-    var pathPost = "gdr_timeIni.php";
+  if (guiaCorrecta) {
+    //start();
 
-    var xhr_posts = $.post(pathPost, data, function(data) {
-        var json = $.parseJSON(data);
-        if (json.success == 1) {
-            // insertado
-            $("#fechaActual").val(json.fecha);
-        }
-    });
-    xhr_posts.fail(function(data) {});
+  }else{
+    window.location='MiCuenta.php';
+  }
 
-    return false;
 }
 
 
@@ -83,25 +78,66 @@ function validador() {
     if (guia.length < 12) {
         document.getElementById("error").style.display = "block";
     } else {
-        document.getElementById('Modal').style.display = "none";
-        document.getElementById('CountDown').style.display = "block";
+      //var guia = $.trim($("#guia").val());
 
-        $(function() {
-            anim(5);
-        });
+      //detiene cronometro y guarda calculo
+      var data = {guia: guia};
+      var pathPost = "gdr_guia.php";
 
-        myVar = setTimeout(load, 500);
-        myVar = setTimeout(close, 1600);
+      var xhr_posts = $.post(pathPost, data, function(data) {
+          var json = $.parseJSON(data);
+          if (json.success == 1) {
+              // insertado
 
-        function load() {
+
+              document.getElementById('Modal').style.display = "none";
+              document.getElementById('CountDown').style.display = "block";
+              guiaCorrecta = true;
+
+              var startNum;
+              function anim(n) {
+                $('#countdown').fadeIn('fast', function() {
+                  if ($(this).html() == "") {
+                    $(this).html(n); // init first time based on n
+                  }
+              $('#countdown').delay(600).hide('puff', 400, function () {
+                if (n == 1) n = startNum; else n--;
+                $(this).html(n);
+                anim(n);
+                }); // end puff
+              });
+            }
+            $(function() {
+              anim(5);
+            });
+
+            myVar = setTimeout(load, 5000);
+            myVar = setTimeout(close, 6500);
+            function load(){
             //document.getElementById('LoadModal').style.display = "none";
             document.getElementById("LoadModal").style.animation = "bounceOutUp 2s 1";
-        }
+            }
+            function close(){
+              $('#LoadModal').modal('hide');
+              window.location='JuegoPenales.php';
+            }
 
-        function close() {
-            $('#LoadModal').modal('hide');
-        }
-    }
+
+          } else {
+
+              $("#alertaRegistro").html(json.error_msg);
+              DisclaimerForm();
+          }
+      });
+      xhr_posts.fail(function(data) {
+          $("#alertaRegistro").html(json.error_msg);
+          DisclaimerForm();
+      });
+
+      return false;
+
+
+    }  //termina else
 }
 
 //funciones
@@ -242,7 +278,7 @@ var acumularTime = 0;
 function start() {
     if (isMarch == false) {
         timeInicial = new Date();
-        control = setInterval(cronometro, 10);
+        //control = setInterval(cronometro, 10);
         isMarch = true;
     }
 }
