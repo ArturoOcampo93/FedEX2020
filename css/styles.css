@@ -117,7 +117,7 @@ main {
 #absolute {
     width: 60%;
     position: absolute;
-    margin-top: -26%;
+    margin-top: -34%;
     margin-left: 10%;
 }
 
@@ -149,6 +149,10 @@ h3 {
     margin-top: 25px;
     margin-bottom: 20px;
     font-family: "Univers-bold", sans-serif;
+}
+
+.size-premios {
+    font-size: 30pt !important;
 }
 
 .fontFedex {
@@ -425,7 +429,7 @@ h5 {
 }
 
 .img-premios {
-    width: 80%;
+    width: 95%;
 }
 
 .naranja {
@@ -964,7 +968,7 @@ footer h4 {
         display: none;
     }
     #absolute {
-        margin-top: -35%;
+        margin-top: -42%;
     }
     #absolute h1 {
         font-size: 4.2vw;
@@ -1035,11 +1039,19 @@ footer h4 {
     .bigtext {
         font-size: 12pt;
     }
+    .size-premios {
+        font-size: 18pt !important;
+    }
+    .cont-boton {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 }
 
 @media only screen and (max-width: 576px) {
     #absolute {
-        margin-top: -80%;
+        margin-top: -100%;
     }
     #absolute h1 {
         font-size: 9vw;
@@ -1056,6 +1068,11 @@ footer h4 {
         width: 100%;
         /*position: absolute;*/
         bottom: 0;
+    }
+    .cont-boton {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 }
 
@@ -1186,7 +1203,7 @@ footer h4 {
     }
     #absolute {
         width: 80%;
-        margin-top: -90%;
+        margin-top: -100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -1203,6 +1220,11 @@ footer h4 {
         font-size: 4vw;
         margin-bottom: 5%;
         text-shadow: 2px 0px 3px rgba(0, 0, 0, 0.46);
+    }
+    .cont-boton {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 }
 
