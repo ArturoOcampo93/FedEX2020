@@ -1,9 +1,50 @@
+<?php
+session_start();
+require_once("js/clases.php");
+if (isset($_SESSION['fedex19']) ) {  //existe la session
+	//echo "valida usuario";
+	$recievedJwt=$_SESSION['fedex19'];
+	//token valido
+	$tokenValid = Tocken::validaToken($recievedJwt);
+
+	if($tokenValid){  //el token es valido
+		//datos de token
+		$usuarioC = Tocken::datosToken($recievedJwt);
+		$usuarioC = json_decode($usuarioC, true);
+		//print_r($usuarioC);
+		$existe=Usuarios::buscaUsuario($usuarioC['usuario']);
+
+		if($existe['encontrado'] == "si"){ //el usuario es valido
+		}else{
+			session_destroy();
+			header("Location: index.html");
+			exit(0);
+		}  //termina usuario
+
+	}else{
+		session_destroy();
+		header("Location: index.thml");
+		exit(0);
+	}// termina token
+
+}else{
+	session_destroy();
+	header("Location: index.html");
+	exit(0);
+}  //termina session
+
+?>
 <!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name ="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <!--CSS Bootrstrap 4.3 & Arturo-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -22,6 +63,63 @@
     <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#00a300">
     <meta name="theme-color" content="#ffffff">
+
+    <style>
+    .gameFooter{
+      height: 200px;
+    }
+        canvas {
+                  image-rendering: optimizeSpeed;
+                  -webkit-interpolation-mode: nearest-neighbor;
+                  -ms-touch-action: none;
+                  margin: 0px;
+                  padding: 0px;
+                  border: 0px;
+									display: none;
+        }
+        :-webkit-full-screen #canvas {
+             width: 100%;
+             height: 100%;
+        }
+        div.gm4html5_div_class
+        {
+          margin: 0px;
+          padding: 0px;
+          border: 0px;
+        }
+        /* START - Login Dialog Box */
+        div.gm4html5_login
+        {
+             padding: 20px;
+             position: absolute;
+             border: solid 2px #000000;
+             background-color: #404040;
+             color:#00ff00;
+             border-radius: 15px;
+             box-shadow: #101010 20px 20px 40px;
+        }
+        div.gm4html5_cancel_button
+        {
+             float: right;
+        }
+        div.gm4html5_login_button
+        {
+             float: left;
+        }
+        div.gm4html5_login_header
+        {
+             text-align: center;
+        }
+        /* END - Login Dialog Box */
+        :-webkit-full-screen {
+           width: 100%;
+           height: 100%;
+        }
+
+        .game {
+          background-color: transparent!important;
+        }
+    </style>
 
     <title>Fedex</title>
 </head>
@@ -50,7 +148,7 @@
                         <a class="nav-link text-white" href="index.html#ganadores">Ganadores</a>
                     </li>
                 </ul>
-                <span class="navbar-text"><a href="#" class="text-white" onclick="location.href='MiCuenta.html';">Mi Cuenta</a></span>
+                <span class="navbar-text"><a href="#" class="text-white" onclick="location.href='MiCuenta.php';">Mi Cuenta</a></span>
                 <img src="images/Icon-cuenta.png" class="img-fluid" id="icon-cuenta" alt="Cuenta">
             </div>
         </nav>
@@ -58,54 +156,18 @@
     <main>
         <div class="container-fluid gamepage">
             <div class="game">
-                Ventana del juego<br>-<br><a class="btn btn-primary" data-toggle="modal" data-target="#Gracias-Participar">Modal de fin del juego</a>
+                <!--Ventana del juego<br>-<br><a class="btn btn-primary" data-toggle="modal" data-target="#Gracias-Participar">Modal de fin del juego</a>-->
+                <div class="gm4html5_div_class" id="gm4html5_div_id">
+                    <!-- Create the canvas element the game draws to -->
+                    <canvas id="canvas" width="800" height="600">
+                       <p>Your browser doesn't support HTML5 canvas.</p>
+                    </canvas>
+                </div>
+
+
             </div>
         </div>
 
-        <!--Modal | Numero de Guia | Se carga automaticamente al inicar la pagina y pide al usuario el no. de guía-->
-        <div class="modal" id="LoadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header modal-backdrop">
-                    </div>
-                    <div class="modal-body" id="Modal">
-                        <div class="row center">
-                            <img class="img-fluid ImgModal" src="images/ModalJuego.png" alt="Modal Image">
-                        </div>
-                        <div class="row">
-                            <div class="col-12 textcenter">
-                                <h2 class="TitulosModal">¡El mejor goleador!</h2>
-                                <p class="ModalText">Registra tu No. de Guía y comienza el juego. Acumula puntos por cada guía registrada.</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <form class="" action="" method="post" onsubmit="validador()">
-                                    <input class="textcenter" id="NoGuia" type="text" name="" value="" size="12" maxlength="12" placeholder="Escriba su No. de guía FedEx">
-                                </form>
-                            </div>
-                        </div>
-                        <div class="row" id="error">
-                            <div class="col-12 textcenter">
-                                <p>Número de guía incorrecto o registrado anteriormente</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <button type="button" class="btn btn-primary btn-lg maxwidth EndPage" onclick="validador()">Participar</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container-fluid center align" id="CountDown">
-                        <div class="row">
-                            <div class="col-12 align">
-                                <p id="countdown"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
         <!--Modal | Gracias por Participar-->
@@ -132,9 +194,9 @@
             </div>
         </div>
     </main>
-    <footer class="bottom">
+    <footer class="bottom gameFooter">
         <div class="container">
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-12 col-md-3 center linea">
                     <h4><a href="PDF/TC-FedEx.pdf" target="_blank">Términos y Condiciones de uso</a></h4>
                 </div>
@@ -147,10 +209,10 @@
                 <div class="col-12 col-md-3 center linea">
                     <h4><a href="PDF/FAQs.pdf" target="_blank">FAQs</a></h4>
                 </div>
-            </div>
+            </div>-->
             <div class="row">
                 <div class="col-12 center">
-                    <p class="textFooter">TVP. Este sitio utiliza cookies para ayudarnos a mejorar tu experiencia cada vez que lo visites. Al continuar navegando en el, estarás aceptando su uso. Podrás deshabilitarlas accediendo a la configuración de tu navegador.</p>
+                    <p class="textFooter"></p>
                 </div>
             </div>
         </div>
@@ -163,12 +225,21 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script src="js/aos.js"></script>
-    <script type="text/javascript" src="js/validacion.js"></script>
+
     <script>
+
+		$(document).ready(function() {
+			setTimeout(function(){ $("#canvas").show(); }, 2000);
+		});
         AOS.init({
             easing: 'ease-in-out-sine'
         });
     </script>
+
+    <!-- Run the game code -->
+    <script type="text/javascript" src="html5game/fedexPenales.js?NAQYB=530663350"></script>
+    <script>window.onload = GameMaker_Init;</script>
+
 </body>
 
 </html>

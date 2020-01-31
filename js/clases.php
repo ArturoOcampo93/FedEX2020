@@ -132,7 +132,7 @@ class Usuarios{
 //registro nuevo
   public static function regUsuario($data){
     $db = new dbMySQL();
-    $dateReg = $db->query("INSERT INTO `tbl_registro` (`cNombre`,`cApellidos`,`cTelefono`,`cCorreo`,`cContrasena`,`cNombreEmpresa`,`cDia`,`cFecha`,`cIp`) VALUES ('".$data['Nombre']."','".$data['apellidos']."','".$data['telefono']."','".$data['email']."','".$data['password']."','".$data['empresa']."','".$data['hoy']."','".$data['fecha']."','".$data['ip']."');");
+    $dateReg = $db->query("INSERT INTO `tbl_registro` (`cNombre`,`cApellidos`,`cTelefono`,`cCorreo`,`cContrasena`,`cNombreEmpresa`,`cDia`,`cFecha`,`cIp`, `cEnteraste`) VALUES ('".$data['Nombre']."','".$data['apellidos']."','".$data['telefono']."','".$data['email']."','".$data['password']."','".$data['empresa']."','".$data['hoy']."','".$data['fecha']."','".$data['ip']."','".$data['enteraste']."');");
     $db->close();
     unset($db);
   }  //termina registro
@@ -207,7 +207,7 @@ class Guias{
 	//registra nueva guia
 	public static function regGuia($data){
 		$db = new dbMySQL();
-		$dateReg = $db->query("INSERT INTO `tbl_guias` (`cUsuario`,`cGuia`,`cCalculo`,`cFechaIni`,`cFecha`,`cTiempo`,`cDia`,`cSemana`,`cIp`) VALUES ('".$data['usuario']."','".$data['guia']."','".$data['cajas']."','".$data['fechaActual']."','".$data['fecha']."','".$data['tiempo']."','".$data['hoy']."','".$data['semana']."','".$data['ip']."');");
+		$dateReg = $db->query("INSERT INTO `tbl_guias` (`cUsuario`,`cGuia`,`cCalculo`,`cFechaIni`,`cFecha`,`cTiempo`,`cDia`,`cSemana`,`cIp`) VALUES ('".$data['usuario']."','".$data['guia']."','".$data['cajas']."','','".$data['fecha']."','','".$data['hoy']."','".$data['semana']."','".$data['ip']."');");
 		$db->close();
 		unset($db);
 	}  //termina registro nueva guia

@@ -1,3 +1,42 @@
+<?php
+session_start();
+require_once("js/clases.php");
+if (isset($_SESSION['fedex19']) ) {  //existe la session
+	//echo "valida usuario";
+	$recievedJwt=$_SESSION['fedex19'];
+	//token valido
+	$tokenValid = Tocken::validaToken($recievedJwt);
+
+	if($tokenValid){  //el token es valido
+		//datos de token
+		$usuarioC = Tocken::datosToken($recievedJwt);
+		$usuarioC = json_decode($usuarioC, true);
+		//print_r($usuarioC);
+		$existe=Usuarios::buscaUsuario($usuarioC['usuario']);
+
+		if($existe['encontrado'] == "si"){ //el usuario es valido
+		}else{
+			session_destroy();
+			header("Location: index.html");
+			exit(0);
+		}  //termina usuario
+
+	}else{
+		session_destroy();
+		header("Location: index.thml");
+		exit(0);
+	}// termina token
+
+}else{
+	session_destroy();
+	header("Location: index.html");
+	exit(0);
+}  //termina session
+
+//historial de guias
+$guias = Guias::todasGuias($usuarioC['usuario']);
+$goles = 0;
+?>
 <!doctype html>
 <html lang="es">
 
@@ -107,21 +146,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>163465789567</td>
-                                    <td>20/01/2020</td>
-                                    <td>2</td>
-                                </tr>
-                                <tr>
-                                    <td>163465786479</td>
-                                    <td>25/01/2020</td>
-                                    <td>2</td>
-                                </tr>
+                              <?php
+                              if (COUNT($guias)>0) {
+                                for ($i=0; $i < COUNT($guias); $i++) {
+                                  $guia = $guias[$i][2];
+                                  $calculo = $guias[$i][3];
+                                  $fecha = $guias[$i][5];
+                                  $tiempo = $guias[$i][6];
+																	$goles+=$calculo;
+
+                                  echo '
+                                  <tr>
+                                  <td>'.$guia.'</td>
+                                  <td>'.$fecha.'</td>
+                                  <td>'.$calculo.'</td>
+                                  </tr>
+                                  ';
+                                }
+                              }
+                              ?>
+
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <td class="text-right" colspan="2">Total de goles acumulados:</td>
-                                    <td>4</td>
+                                    <td><?php echo $goles; ?></td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -130,11 +179,11 @@
                 <div class="row margin-Bottom">
                     <div class="col-12 col-md-6">
                         <!--Botón de Volver a jugar-->
-                        <button class="btn-large" type="button" name="button" onclick="location.href='Juego.html';">Volver a jugar</button>
+                        <button class="btn-large" type="button" name="button" onclick="location.href='Juego.php';">Volver a jugar</button>
                     </div>
                     <div class="col-12 col-md-6">
                         <!--Botón Salir de Mi Cuenta -->
-                        <button class="btn-large" type="button" name="button" onclick="location.href='index.html';">Salir de Mi Cuenta</button>
+                        <button class="btn-large" type="button" name="button" onclick="location.href='cerrar_sesion.php';">Salir de Mi Cuenta</button>
                     </div>
                 </div>
             </div>

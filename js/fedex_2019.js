@@ -184,7 +184,7 @@ closeFormRecupera();
       var json= $.parseJSON(data);
       if(json.success==1){
         // insertado
-        window.location='Calcula&Gana.php';
+        window.location='Juego.php';
         return false;
       }else{
 
