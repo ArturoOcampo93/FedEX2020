@@ -75,6 +75,7 @@ if (isset($_SESSION['fedex19']) ) {  //existe la session
                   margin: 0px;
                   padding: 0px;
                   border: 0px;
+									display: none;
         }
         :-webkit-full-screen #canvas {
              width: 100%;
@@ -226,6 +227,10 @@ if (isset($_SESSION['fedex19']) ) {  //existe la session
     <script src="js/aos.js"></script>
 
     <script>
+
+		$(document).ready(function() {
+			setTimeout(function(){ $("#canvas").show(); }, 2000);
+		});
         AOS.init({
             easing: 'ease-in-out-sine'
         });
