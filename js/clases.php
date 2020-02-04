@@ -4,18 +4,18 @@ conexion a base de datos
 ***********************/
 class dbMySQL{
 
-	private $host = "localhost";
+	/*private $host = "localhost";
 	private $usuario = "root";
 	private $clave = "";
 	private $db = "fedex19";
-	private $conn;
+	private $conn;*/
 
 	//produccion
-	/*private $host = "localhost";
+	private $host = "localhost";
 	private $usuario = "promofex_usr19";
 	private $clave = 'UmEmf_zR0m#F';
-	private $db = "promofex_fedex19";
-	private $conn;*/
+	private $db = "promofex_fedex20";
+	private $conn;
 
 
 	//conexion a base de datos
