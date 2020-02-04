@@ -204,6 +204,28 @@ tfoot {
     width: 100%;
 }
 
+.flex-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    div {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .margin-top-button {
+        margin-top: -2%;
+        margin-bottom: 10%;
+    }
+}
+
+.margin-div {
+    margin-top: -1%;
+    margin-bottom: 3%;
+}
+
 @media only screen and (max-width: 769px) {
     #formregistro {
         width: 100%;
@@ -291,5 +313,11 @@ tfoot {
     }
     .linea {
         border: none;
+    }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1200px) {
+    .img-premios {
+        width: 80% !important;
     }
 }
