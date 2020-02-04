@@ -194,8 +194,11 @@ if (isset($_SESSION['fedex19']) ) {  //existe la session
                                 asdas
                               </div>
                                 <button type="button" class="btn btn-primary btn-lg maxwidth EndPage" onclick="validador()">Participar</button>
+																<button type="button" class="btn btn-primary btn-lg maxwidth EndPage" onclick="location.href='index.html';">Salir</button>
                             </div>
+
                         </div>
+
 
                     </div>
                     <div class="container-fluid center align" id="CountDown">

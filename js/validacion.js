@@ -89,8 +89,10 @@ function validador() {
           if (json.success == 1) {
               // insertado
 
+              window.location='JuegoPenales.php';
 
-              document.getElementById('Modal').style.display = "none";
+
+            /*  document.getElementById('Modal').style.display = "none";
               document.getElementById('CountDown').style.display = "block";
               guiaCorrecta = true;
 
@@ -126,7 +128,7 @@ function validador() {
             }
             function close(){
               //$('#LoadModal').modal('hide');
-            }
+            }*/
 
 
           } else {
