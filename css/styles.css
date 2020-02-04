@@ -152,7 +152,7 @@ h3 {
 }
 
 .size-premios {
-    font-size: 30pt !important;
+    font-size: 36pt !important;
 }
 
 .fontFedex {
@@ -189,7 +189,7 @@ h3 {
 }
 
 .TituloDestacado {
-    font-size: 40pt;
+    font-size: 28pt;
     font-weight: bold;
     font-family: "univers-condensed-bold-otf", "univers-condensed-bold-woff", sans-serif;
     color: #4c148c;
@@ -429,11 +429,16 @@ h5 {
 }
 
 .img-premios {
-    width: 95%;
+    width: 60%;
+    height: auto;
 }
 
 .naranja {
     background: #ff6600;
+}
+
+.align-right {
+    text-align: right;
 }
 
 
@@ -738,7 +743,6 @@ footer h4 {
 }
 
 .error {
-    
     color: #4c148c;
 }
 
@@ -1047,6 +1051,13 @@ footer h4 {
         display: flex;
         justify-content: center;
     }
+    .inverse {
+        display: flex;
+        flex-wrap: wrap-reverse !important;
+    }
+    .align-right {
+        text-align: right;
+    }
 }
 
 @media only screen and (max-width: 576px) {
@@ -1073,6 +1084,13 @@ footer h4 {
         width: 100%;
         display: flex;
         justify-content: center;
+    }
+    .inverse {
+        display: flex;
+        flex-wrap: wrap-reverse !important;
+    }
+    .align-right {
+        text-align: center;
     }
 }
 
@@ -1225,6 +1243,10 @@ footer h4 {
         width: 100%;
         display: flex;
         justify-content: center;
+    }
+    .inverse {
+        display: flex;
+        flex-wrap: wrap-reverse !important;
     }
 }
 
