@@ -193,7 +193,7 @@ if (isset($_SESSION['fedex19']) ) {  //existe la session
                               <div id="alertaRegistro" class="textcenter error">
                                 asdas
                               </div>
-                                <button type="button" class="btn btn-primary btn-lg maxwidth EndPage" onclick="validador()">Participar</button>
+                                <button type="button" class="btn btn-primary btn-lg maxwidth" onclick="validador()">Participar</button>
 																<button type="button" class="btn btn-primary btn-lg maxwidth EndPage" onclick="location.href='index.html';">Salir</button>
                             </div>
 
